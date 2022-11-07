@@ -4,14 +4,14 @@ namespace ApiRest.Repository
 {
     public interface IProductsInMemory
     {
-        IEnumerable<Product> GiveProducts();
+        Task<IEnumerable<Product>> GiveProductsAsync();
 
-        Product GiveProduct(string SKU);
+        Task<Product> GiveProductAsync(string SKU);
 
-        void CreateProduct(Product product);
+        Task CreateProductAsync(Product product);
 
-        void ModifyProduct(Product product);
+        Task ModifyProductAsync(Product product);
 
-        void DeleteProduct(string SKU);
+        Task DeleteProductAsync(string SKU);
     }
 }

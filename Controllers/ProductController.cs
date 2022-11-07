@@ -17,9 +17,9 @@ namespace ApiRest.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<ProductDTO> GetProducts()
+        public async Task<IEnumerable<ProductDTO>> GetProducts()
         {
-            var productsList = repository.GiveProducts().Select(p=>p.convertDTO());
+            var productsList = (await repository.GiveProductsAsync()).Select(p=>p.convertDTO());
 
             if (productsList.Count() == 0)
             {
@@ -30,9 +30,9 @@ namespace ApiRest.Controllers
         }
 
         [HttpGet("{codProduct}")]
-        public ActionResult<ProductDTO> GetProduct(string codProduct)
+        public async Task<ActionResult<ProductDTO>> GetProduct(string codProduct)
         {
-            var product = repository.GiveProduct(codProduct).convertDTO();
+            var product = (await repository.GiveProductAsync(codProduct)).convertDTO();
 
             if (product == null)
             {
@@ -42,7 +42,7 @@ namespace ApiRest.Controllers
         }
 
         [HttpPost]
-        public ActionResult<ProductDTO> CreateProduct(ProductDTO p)
+        public async Task<ActionResult<ProductDTO>> CreateProduct(ProductDTO p)
         {
             Product product = new Product
             {
@@ -54,14 +54,14 @@ namespace ApiRest.Controllers
                 RegistrationDate = DateTime.Now,
             };
 
-            repository.CreateProduct(product);
+            await repository.CreateProductAsync(product);
             return product.convertDTO();
         }
 
         [HttpPut]
-        public ActionResult<ProductDTO> ModifyProduct(string codProduct, ProductUpdateDTO p)
+        public async Task<ActionResult<ProductDTO>> ModifyProduct(string codProduct, ProductUpdateDTO p)
         {
-            Product productExist = repository.GiveProduct(codProduct);
+            Product productExist = await repository.GiveProductAsync(codProduct);
 
             if (productExist == null)
             {
@@ -72,22 +72,22 @@ namespace ApiRest.Controllers
             productExist.Description = p.Description;
             productExist.Price = p.Price;
 
-            repository.ModifyProduct(productExist);
+            await repository.ModifyProductAsync(productExist);
 
             return productExist.convertDTO();
         }
 
         [HttpDelete]
-        public ActionResult<ProductDTO> DeleteProduct(string codProduct)
+        public async Task<ActionResult<ProductDTO>> DeleteProduct(string codProduct)
         {
-            Product productExist = repository.GiveProduct(codProduct);
+            Product productExist = await repository.GiveProductAsync(codProduct);
 
             if (productExist == null)
             {
                 return NotFound();
             }
 
-            repository.DeleteProduct(codProduct);
+            await repository.DeleteProductAsync(codProduct);
 
             return  NoContent();
         }

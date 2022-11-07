@@ -17,7 +17,7 @@ namespace ApiRest.Repository
         {
             return new SqlConnection(ConnectionString);
         }
-        public void CreateProduct(Product product)
+        public async Task CreateProductAsync(Product product)
         {
             SqlConnection sqlConnection = connection();
             SqlCommand Comm = null;
@@ -32,7 +32,7 @@ namespace ApiRest.Repository
                 Comm.Parameters.Add("@Description", SqlDbType.VarChar, 5000).Value = product.Description;
                 Comm.Parameters.Add("@Price", SqlDbType.Float).Value = product.Price;
                 Comm.Parameters.Add("@SKU", SqlDbType.VarChar, 100).Value = product.SKU;
-                Comm.ExecuteNonQuery();
+                await Comm.ExecuteNonQueryAsync();
             }
             catch(Exception ex)
             {
@@ -44,9 +44,10 @@ namespace ApiRest.Repository
                 sqlConnection.Close();
                 sqlConnection.Dispose();
             }
+            await Task.CompletedTask;
         }
 
-        public void DeleteProduct(string SKU)
+        public async Task DeleteProductAsync(string SKU)
         {
             SqlConnection sqlConnection = connection();
             SqlCommand Comm = null;
@@ -58,7 +59,8 @@ namespace ApiRest.Repository
                 Comm.CommandText = "dbo.Delete_Product";
                 Comm.CommandType = CommandType.StoredProcedure;
                 Comm.Parameters.Add("@SKU", SqlDbType.VarChar, 100).Value = SKU;
-                Comm.ExecuteNonQuery();
+                await Comm.ExecuteNonQueryAsync();
+
             }
             catch (Exception ex)
             {
@@ -70,9 +72,10 @@ namespace ApiRest.Repository
                 sqlConnection.Close();
                 sqlConnection.Dispose();
             }
+            await Task.CompletedTask;
         }
 
-        public Product GiveProduct(string SKU)
+        public async Task<Product> GiveProductAsync(string SKU)
         {
             SqlConnection sqlConnection = connection();
             SqlCommand Comm = null;
@@ -85,7 +88,7 @@ namespace ApiRest.Repository
                 Comm.CommandText = "dbo.Obtain_Products";
                 Comm.CommandType = CommandType.StoredProcedure;
                 Comm.Parameters.Add("@SKU", SqlDbType.VarChar, 100).Value = SKU;
-                SqlDataReader reader = Comm.ExecuteReader();
+                SqlDataReader reader = await Comm.ExecuteReaderAsync();
 
                 if (reader.Read())
                 {
@@ -112,7 +115,7 @@ namespace ApiRest.Repository
             return product;
         }
 
-        public IEnumerable<Product> GiveProducts()
+        public async Task<IEnumerable<Product>> GiveProductsAsync()
         {
             SqlConnection sqlConnection = connection();
             SqlCommand Comm = null;
@@ -125,7 +128,7 @@ namespace ApiRest.Repository
                 Comm = sqlConnection.CreateCommand();
                 Comm.CommandText = "dbo.Obtain_Products";
                 Comm.CommandType = CommandType.StoredProcedure;
-                SqlDataReader reader = Comm.ExecuteReader();
+                SqlDataReader reader = await Comm.ExecuteReaderAsync();
 
                 while (reader.Read())
                 {
@@ -154,7 +157,7 @@ namespace ApiRest.Repository
             return products;
         }
 
-        public void ModifyProduct(Product product)
+        public async Task ModifyProductAsync(Product product)
         {
             SqlConnection sqlConnection = connection();
             SqlCommand Comm = null;
@@ -169,7 +172,7 @@ namespace ApiRest.Repository
                 Comm.Parameters.Add("@Description", SqlDbType.VarChar, 5000).Value = product.Description;
                 Comm.Parameters.Add("@Price", SqlDbType.Float).Value = product.Price;
                 Comm.Parameters.Add("@SKU", SqlDbType.VarChar, 100).Value = product.SKU;
-                Comm.ExecuteNonQuery();
+                await Comm.ExecuteNonQueryAsync();
             }
             catch (Exception ex)
             {
@@ -181,6 +184,7 @@ namespace ApiRest.Repository
                 sqlConnection.Close();
                 sqlConnection.Dispose();
             }
+            await Task.CompletedTask;
         }
     }
 }

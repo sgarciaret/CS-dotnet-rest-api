@@ -4,7 +4,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options=>
+{
+    options.SuppressAsyncSuffixInActionNames = false;
+});
 
 var sqlConnectionStringConfiguration = new DataAccess(builder.Configuration.GetConnectionString("SQL"));
 builder.Services.AddSingleton(sqlConnectionStringConfiguration);

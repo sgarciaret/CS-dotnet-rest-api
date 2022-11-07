@@ -12,31 +12,34 @@ namespace ApiRest.Repository
             new Product{ Id = 4, Name = "Bombilla", Description = "Bombilla muy luminosa", Price = 3, RegistrationDate = DateTime.Now, SKU = "BOMB01" }
         };
 
-        public IEnumerable<Product> GiveProducts()
+        public async Task<IEnumerable<Product>> GiveProductsAsync()
         {
-            return products;
+            return await Task.FromResult(products);
         }
 
-        public Product GiveProduct(string SKU)
+        public async Task<Product> GiveProductAsync(string SKU)
         {
-            return products.Where(p => p.SKU == SKU).SingleOrDefault();
+            return await Task.FromResult(products.Where(p => p.SKU == SKU).SingleOrDefault());
         }
 
-        public void CreateProduct(Product product)
+        public async Task CreateProductAsync(Product product)
         {
             products.Add(product);
+            await Task.CompletedTask;
         }
 
-        public void ModifyProduct(Product p)
+        public async Task ModifyProductAsync(Product p)
         {
             int index = products.FindIndex(productExixt=>productExixt.Id== p.Id);
             products[index] = p;
+            await Task.CompletedTask;
         }
 
-        public void DeleteProduct(string SKU)
+        public async Task DeleteProductAsync(string SKU)
         {
             int index = products.FindIndex(productExixt => productExixt.SKU == SKU);
             products.RemoveAt(index);
+            await Task.CompletedTask;
         }
     }
 }
