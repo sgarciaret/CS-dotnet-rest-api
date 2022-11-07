@@ -20,6 +20,12 @@ namespace ApiRest.Controllers
         public IEnumerable<ProductDTO> GetProducts()
         {
             var productsList = repository.GiveProducts().Select(p=>p.convertDTO());
+
+            if (productsList.Count() == 0)
+            {
+                return (IEnumerable<ProductDTO>)NotFound();
+            }
+
             return productsList;
         }
 
@@ -40,7 +46,7 @@ namespace ApiRest.Controllers
         {
             Product product = new Product
             {
-                Id = repository.GiveProducts().Max(x=>x.Id) + 1,
+                //Id = repository.GiveProducts().Max(x => x.Id) + 1,
                 Name = p.Name,
                 Description = p.Description,
                 Price = p.Price,

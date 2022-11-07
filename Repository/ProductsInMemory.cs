@@ -7,7 +7,7 @@ namespace ApiRest.Repository
         private readonly List<Product> products = new List<Product>()
         {
             new Product{ Id = 1, Name = "Martillo", Description = "Martillo super preciso", Price = 12.99, RegistrationDate = DateTime.Now, SKU ="MART01" },
-            new Product{ Id = 2, Name = "Caja de clavos", Description = "100 unidades de clavos", Price = 110, RegistrationDate = DateTime.Now, SKU = "CLAV01" },
+            new Product{ Id = 2, Name = "Caja de clavos", Description = "100 unidades de clavos", Price = 11, RegistrationDate = DateTime.Now, SKU = "CLAV01" },
             new Product{ Id = 3, Name = "Destornillador", Description = "Excelente destornillador", Price = 9.99, RegistrationDate = DateTime.Now, SKU = "DEST01" },
             new Product{ Id = 4, Name = "Bombilla", Description = "Bombilla muy luminosa", Price = 3, RegistrationDate = DateTime.Now, SKU = "BOMB01" }
         };
