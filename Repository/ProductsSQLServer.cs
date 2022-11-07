@@ -7,10 +7,12 @@ namespace ApiRest.Repository
     public class ProductsSQLServer : IProductsInMemory
     {
         private string ConnectionString;
+        private readonly ILogger<ProductsSQLServer> log;
 
-        public ProductsSQLServer(DataAccess connectionString)
+        public ProductsSQLServer(DataAccess connectionString, ILogger<ProductsSQLServer> log)
         {
             ConnectionString = connectionString.SQLConnectionString;
+            this.log = log;
         }
 
         private SqlConnection connection()
@@ -36,7 +38,8 @@ namespace ApiRest.Repository
             }
             catch(Exception ex)
             {
-                throw new Exception("Se produjo nu error al dar de alta " + ex.ToString());
+                log.LogError(ex.ToString());
+                throw new Exception("Se produjo nu error al dar de alta " + ex.Message);
             }
             finally
             {
@@ -64,7 +67,8 @@ namespace ApiRest.Repository
             }
             catch (Exception ex)
             {
-                throw new Exception("Se produjo nu error al eliminar el producto " + ex.ToString());
+                log.LogError(ex.ToString());
+                throw new Exception("Se produjo nu error al eliminar el producto " + ex.Message);
             }
             finally
             {
@@ -104,7 +108,8 @@ namespace ApiRest.Repository
             }
             catch (Exception ex)
             {
-                throw new Exception("Se produjo nu error al dar de alta " + ex.ToString());
+                log.LogError(ex.ToString());
+                throw new Exception("Se produjo nu error al dar de alta " + ex.Message);
             }
             finally
             {
@@ -146,7 +151,8 @@ namespace ApiRest.Repository
             }
             catch (Exception ex)
             {
-                throw new Exception("Se produjo nu error al dar de alta " + ex.ToString());
+                log.LogError(ex.ToString());
+                throw new Exception("Se produjo nu error al dar de alta " + ex.Message);
             }
             finally
             {
@@ -176,7 +182,8 @@ namespace ApiRest.Repository
             }
             catch (Exception ex)
             {
-                throw new Exception("Se produjo nu error al modificar el producto " + ex.ToString());
+                log.LogError(ex.ToString());
+                throw new Exception("Se produjo nu error al modificar el producto " + ex.Message);
             }
             finally
             {

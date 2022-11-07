@@ -1,4 +1,5 @@
 using ApiRest.Repository;
+using NLog.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,11 @@ builder.Services.AddControllers(options=>
 
 var sqlConnectionStringConfiguration = new DataAccess(builder.Configuration.GetConnectionString("SQL"));
 builder.Services.AddSingleton(sqlConnectionStringConfiguration);
+
+builder.Host.ConfigureLogging((hostingContext, logging) =>
+{
+    logging.AddNLog();
+});
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
