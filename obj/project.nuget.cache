@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "x3cWzgXXUSuM4l2h5oHYRjPINYMAkHgyba54Ik9qPYYo/3LW/mQQ32HSaKjp0RR436PEbyxUm5uml8THO2rJqA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Sergio.GarciaR\\Documents\\Udemy\\C#\\ApiRest\\ApiRest.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Sergio.GarciaR\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Sergio.GarciaR\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Sergio.GarciaR\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.0\\microsoft.visualstudio.azure.containers.tools.targets.1.17.0.nupkg.sha512",
+    "C:\\Users\\Sergio.GarciaR\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\Sergio.GarciaR\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\Sergio.GarciaR\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\Sergio.GarciaR\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
