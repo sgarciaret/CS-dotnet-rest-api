@@ -1,12 +1,15 @@
 ﻿using ApiRest.DTO;
 using ApiRest.Modelo;
 using ApiRest.Repository;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiRest.Controllers
 {
     [Route("products")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ProductController : Controller
     {
         private readonly IProductsInMemory repository;
@@ -17,6 +20,7 @@ namespace ApiRest.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IEnumerable<ProductDTO>> GetProducts()
         {
             var productsList = (await repository.GiveProductsAsync()).Select(p=>p.convertDTO());
@@ -30,6 +34,7 @@ namespace ApiRest.Controllers
         }
 
         [HttpGet("{codProduct}")]
+        [Authorize]
         public async Task<ActionResult<ProductDTO>> GetProduct(string codProduct)
         {
             var product = (await repository.GiveProductAsync(codProduct)).convertDTO();
@@ -42,6 +47,7 @@ namespace ApiRest.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<ProductDTO>> CreateProduct(ProductDTO p)
         {
             Product product = new Product
@@ -59,6 +65,7 @@ namespace ApiRest.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         public async Task<ActionResult<ProductDTO>> ModifyProduct(string codProduct, ProductUpdateDTO p)
         {
             Product productExist = await repository.GiveProductAsync(codProduct);
@@ -78,6 +85,7 @@ namespace ApiRest.Controllers
         }
 
         [HttpDelete]
+        [Authorize]
         public async Task<ActionResult<ProductDTO>> DeleteProduct(string codProduct)
         {
             Product productExist = await repository.GiveProductAsync(codProduct);

@@ -31,3 +31,13 @@ C:\Users\Sergio.GarciaR\Documents\Udemy\C#\ApiRest\bin\Debug\net6.0\runtimes\win
 C:\Users\Sergio.GarciaR\Documents\Udemy\C#\ApiRest\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
 C:\Users\Sergio.GarciaR\Documents\Udemy\C#\ApiRest\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Sergio.GarciaR\Documents\Udemy\C#\ApiRest\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Sergio.GarciaR\Documents\Udemy\C#\ApiRest\bin\Debug\net6.0\nlog.config
+C:\Users\Sergio.GarciaR\Documents\Udemy\C#\ApiRest\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Sergio.GarciaR\Documents\Udemy\C#\ApiRest\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Sergio.GarciaR\Documents\Udemy\C#\ApiRest\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Sergio.GarciaR\Documents\Udemy\C#\ApiRest\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Sergio.GarciaR\Documents\Udemy\C#\ApiRest\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Sergio.GarciaR\Documents\Udemy\C#\ApiRest\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Sergio.GarciaR\Documents\Udemy\C#\ApiRest\bin\Debug\net6.0\NLog.dll
+C:\Users\Sergio.GarciaR\Documents\Udemy\C#\ApiRest\bin\Debug\net6.0\NLog.Extensions.Logging.dll
+C:\Users\Sergio.GarciaR\Documents\Udemy\C#\ApiRest\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
