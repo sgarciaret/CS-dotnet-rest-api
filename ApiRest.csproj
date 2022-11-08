@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Folder Include="Log\" />
+    <Folder Include="Images\" />
   </ItemGroup>
 
 </Project>

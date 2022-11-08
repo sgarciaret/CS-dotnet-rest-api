@@ -99,5 +99,22 @@ namespace ApiRest.Controllers
 
             return  NoContent();
         }
+
+        [HttpPost("SaveImage")]
+        public async Task<string> SaveImage([FromForm] UploadImageAPI file)
+        {
+            var route = String.Empty;
+            if (file.Archive.Length > 0)
+            {
+                var archiveName = Guid.NewGuid().ToString() + ".jpg";
+                route = $"Imagenes/{archiveName}";
+                using (var stream = new FileStream(route, FileMode.Create))
+                {
+                    await file.Archive.CopyToAsync(stream);
+                }
+            }
+
+            return route;
+        }
     }
 }
