@@ -12,7 +12,7 @@ namespace ApiRest.Repository
             new Product{ Id = 4, Name = "Bombilla", Description = "Bombilla muy luminosa", Price = 3, RegistrationDate = DateTime.Now, SKU = "BOMB01" }
         };
 
-        public async Task<IEnumerable<Product>> GiveProductsAsync()
+        public async Task<IEnumerable<Product>> GiveProductsAsync(int pag, int reg)
         {
             return await Task.FromResult(products);
         }

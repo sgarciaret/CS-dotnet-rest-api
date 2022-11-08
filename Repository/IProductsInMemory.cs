@@ -4,7 +4,7 @@ namespace ApiRest.Repository
 {
     public interface IProductsInMemory
     {
-        Task<IEnumerable<Product>> GiveProductsAsync();
+        Task<IEnumerable<Product>> GiveProductsAsync(int pag, int reg);
 
         Task<Product> GiveProductAsync(string SKU);
 

@@ -21,9 +21,9 @@ namespace ApiRest.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IEnumerable<ProductDTO>> GetProducts()
+        public async Task<IEnumerable<ProductDTO>> GetProducts(int pag, int reg)
         {
-            var productsList = (await repository.GiveProductsAsync()).Select(p=>p.convertDTO());
+            var productsList = (await repository.GiveProductsAsync(pag, reg)).Select(p=>p.convertDTO());
 
             if (productsList.Count() == 0)
             {

@@ -120,7 +120,7 @@ namespace ApiRest.Repository
             return product;
         }
 
-        public async Task<IEnumerable<Product>> GiveProductsAsync()
+        public async Task<IEnumerable<Product>> GiveProductsAsync(int pag, int reg)
         {
             SqlConnection sqlConnection = connection();
             SqlCommand Comm = null;
@@ -133,6 +133,8 @@ namespace ApiRest.Repository
                 Comm = sqlConnection.CreateCommand();
                 Comm.CommandText = "dbo.Obtain_Products";
                 Comm.CommandType = CommandType.StoredProcedure;
+                Comm.Parameters.Add("@PAG", SqlDbType.Int).Value = pag;
+                Comm.Parameters.Add("@REG", SqlDbType.Int).Value = reg;
                 SqlDataReader reader = await Comm.ExecuteReaderAsync();
 
                 while (reader.Read())
